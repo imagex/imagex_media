@@ -5,7 +5,9 @@ core = 7.x
 version = 7.x-1.0
 project = imagex_media
 
+dependencies[] = imagex
 dependencies[] = media
-dependencies[] = media_browser_plus
+; While media_browser_plus is a dependency, it cannot be enabled here.
+; dependencies[] = media_browser_plus
 dependencies[] = media_youtube
 dependencies[] = media_crop
