@@ -2,6 +2,24 @@ api = 2
 core = 7.x
 
 ; Download contributed modules.
+projects[fitvids][type] = "module"
+projects[fitvids][subdir] = "contrib"
+projects[fitvids][version] = "1.14"
+projects[image_resize_filter][type] = "module"
+projects[image_resize_filter][subdir] = "contrib"
+projects[image_resize_filter][version] = "1.13"
+projects[image_url_formatter][type] = "module"
+projects[image_url_formatter][subdir] ="contrib"
+projects[image_url_formatter][version] = "1.4"
+projects[imagecache_actions][type] = "module"
+projects[imagecache_actions][subdir] = "contrib"
+projects[imagecache_actions][version] = "1.4"
+projects[imagecrop][type] = "module"
+projects[imagecrop][subdir] = "contrib"
+projects[imagecrop][version] = "1.0-rc3"
+projects[imagestyleflush][type] = "module"
+projects[imagestyleflush][subdir] = "contrib"
+projects[imagestyleflush][version] = "1.2"
 projects[media][type] = "module"
 projects[media][subdir] = "contrib"
 projects[media][version] = "2.0-alpha2"
@@ -21,5 +39,8 @@ projects[media_crop][version] = "1.x-dev"
 projects[media_crop][patch][] = "https://raw.github.com/imagex/imagex_patches/7.x/contrib/media_crop/wysiwyg-dependece-remove_2075161_1.patch"
 projects[media_crop][patch][] = "https://raw.github.com/imagex/imagex_patches/7.x/contrib/media_crop/media_crop-7-x.1.x_media-2.x.patch"
 projects[media_crop][patch][] = "https://raw.github.com/imagex/imagex_patches/7.x/contrib/media_crop/media_crop-access-iframes-safely-1710824-7.patch"
+projects[video_embed_field][type] = "module"
+projects[video_embed_field][subdir] = "contrib"
+projects[video_embed_field][version] = "2.0-beta5"
 
 ; Download Libraries.

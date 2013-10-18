@@ -1,0 +1,11 @@
+name = Media
+description = Standard configuration and functionality related to media.
+package = ImageX
+core = 7.x
+version = 7.x-1.0
+project = imagex_media
+
+dependencies[] = media
+dependencies[] = media_browser_plus
+dependencies[] = media_youtube
+dependencies[] = media_crop
