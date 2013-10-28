@@ -1,0 +1,105 @@
+<?php
+/**
+ * @file
+ */
+
+/**
+ * Implements hook_install().
+ */
+function imagex_media_install() {
+  foreach (imagex_media_default_variables() as $variable => $default_value) {
+    variable_set($variable, $default_value);
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function imagex_media_uninstall() {
+  foreach (imagex_media_default_variables() as $variable => $default_value) {
+    variable_del($variable);
+  }
+}
+
+/**
+ * Implements hook_enable().
+ */
+function imagex_media_enable() {
+  _imagex_media_enable_media_folders();
+}
+
+/**
+ * Implements hook_disable().
+ */
+function imagex_media_disable() {
+  /* if (variable_get('imagex_media_media_folder_delete_on_disable', FALSE)) {
+    // @TODO: Handle delete of media folders.
+  } */
+}
+
+/**
+ * Returns an array of default variables.
+ *
+ * @return array
+ *   Returns a variable name keyed array with default values.
+ */
+function imagex_media_default_variables() {
+  return array(
+    'imagex_media_media_folder_delete_on_disable' => FALSE,
+  );
+}
+
+/**
+ * Creates the media folder vocabulary and each folder's term.
+ */
+function _imagex_media_enable_media_folders() {
+  // Attempt to load the media folders vocabulary. If it does not exist,
+  // let's go ahead and create it.
+  $media_folders_vocabulary = imagex_media_get_media_folders_vocabulary();
+  if (FALSE === $media_folders_vocabulary) {
+    $media_folders_vocabulary_definition = (object) _imagex_media_get_media_folder_vocabulary_definition();
+    taxonomy_vocabulary_save($media_folders_vocabulary_definition);
+    unset($media_folders_vocabulary_definition);
+
+    $media_folders_vocabulary = imagex_media_get_media_folders_vocabulary();
+    // Should the vocabulary save fail, throw an exception because we
+    // cannot continue with configuration and setup.
+    if (!$media_folders_vocabulary) {
+      throw new ImagexException(t('Unable to create and load the media folders vocabulary.'));
+    }
+  }
+
+  // Create the media folder root term, save it and let's move on.
+  // @TODO: Look and determine if we should perform a lookup first.
+  $media_folder_root = (object) array(
+    'name' => t('Media Root'),
+    'description' => t('The root media folder which acts as the default.'),
+    'vid' => $media_folders_vocabulary->vid,
+    'weight' => '-10',
+    'parent' => 0,
+  );
+  taxonomy_term_save($media_folder_root);
+  variable_set('media_browser_plus_root_folder_tid', $media_folder_root->tid);
+
+  // Enable the media_browser_plus module. While a dependency, we cannot add it
+  // as an explicit dependency within the .info file to avoid errors during
+  // installation about media folders and root.
+  module_enable(array('media_browser_plus'));
+}
+
+/**
+ * Returns an array representation of the media folders vocabulary.
+ * 
+ * @return array
+ *   Returns an associative array that mocks the vocabulary for creation.
+ */
+function _imagex_media_get_media_folder_vocabulary_definition() {
+  return array(
+    'name' => t('Media Folders'),
+    'description' => t('The media folders vocabulary allows for the organization of media data.'),
+    'machine_name' => IMAGEX_MEDIA_MEDIA_FOLDER_MACHINE_NAME,
+    'heirarchy' => TRUE,
+    'module' => 'imagex_media',
+    'weight' => '1',
+  );
+}

@@ -1,0 +1,20 @@
+<?php
+/**
+ * @file
+ */
+
+/**
+ * The machine name of the media folder vocabulary.
+ */
+define('IMAGEX_MEDIA_MEDIA_FOLDER_MACHINE_NAME', 'media_folders');
+
+/**
+ * Returns the media folder vocabulary object.
+ *
+ * @return mixed
+ *   Returns an object representing the media folder vocabulary if it exists,
+ *   otherwise returns FALSE.
+ */
+function imagex_media_get_media_folders_vocabulary() {
+  return taxonomy_vocabulary_machine_name_load(IMAGEX_MEDIA_MEDIA_FOLDER_MACHINE_NAME);
+}
