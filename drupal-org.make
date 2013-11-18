@@ -44,3 +44,6 @@ projects[video_embed_field][subdir] = "contrib"
 projects[video_embed_field][version] = "2.0-beta5"
 
 ; Download Libraries.
+libraries[jquery.imgareaselect][download][type] = "file"
+libraries[jquery.imgareaselect][download][url] = "http://odyniec.net/projects/imgareaselect/jquery.imgareaselect-0.9.10.zip"
+libraries[jquery.imgareaselect][directory_name] = "jquery.imgareaselect"
