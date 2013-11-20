@@ -22,8 +22,12 @@ projects[imagestyleflush][subdir] = "contrib"
 projects[imagestyleflush][version] = "1.2"
 projects[media][type] = "module"
 projects[media][subdir] = "contrib"
-projects[media][version] = "2.0-alpha2"
-projects[media][patch][] = "https://raw.github.com/imagex/imagex_patches/7.x/contrib/media/media-warnings-creating-default-object-from-emtpy-value-2071073-1.patch"
+projects[media][download][type] = "git"
+projects[media][download][url] = "http://git.drupal.org/project/media.git"
+; Picking a commit from latest dev past 2.0-alpha3 as of 2013/11/19 so we can
+; avoid new development breaking functionality on new builds until we're ready
+; to advance the version or commit forward.
+projects[media][download][revision] = "4a8831966c771b7acb611b8a21fdf63bb70a1b69"
 projects[media_browser_plus][type] = "module"
 projects[media_browser_plus][subdir] = "contrib"
 projects[media_browser_plus][version] = "3.0-beta2"
