@@ -51,3 +51,7 @@ projects[video_embed_field][version] = "2.0-beta5"
 libraries[jquery.imgareaselect][download][type] = "file"
 libraries[jquery.imgareaselect][download][url] = "http://odyniec.net/projects/imgareaselect/jquery.imgareaselect-0.9.10.zip"
 libraries[jquery.imgareaselect][directory_name] = "jquery.imgareaselect"
+
+libraries[jquery.fitvids][download][type] = "file"
+libraries[jquery.fitvids][download][url] = "https://raw.github.com/davatron5000/FitVids.js/master/jquery.fitvids.js"
+libraries[jquery.fitvids][directory_name] = "fitvids"
