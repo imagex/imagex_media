@@ -9,6 +9,20 @@
 define('IMAGEX_MEDIA_MEDIA_FOLDER_MACHINE_NAME', 'media_folders');
 
 /**
+ * Implements hook_permission().
+ */
+function imagex_media_permission() {
+  return array(
+    'edit terms in media_folders' => array(
+      'name' => 'edit terms in media_folders',
+    ),
+    'delete terms in media_folders' => array(
+      'name' => 'delete terms in media_folders',
+    ),
+  );
+}
+
+/**
  * Returns the media folder vocabulary object.
  *
  * @return mixed
