@@ -10,4 +10,5 @@ dependencies[] = media
 ; While media_browser_plus is a dependency, it cannot be enabled here.
 ; dependencies[] = media_browser_plus
 dependencies[] = media_youtube
-dependencies[] = media_crop
+; Turning off media_crop as a dependency so it can be disabled.
+; dependencies[] = media_crop
