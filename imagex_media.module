@@ -9,6 +9,20 @@
 define('IMAGEX_MEDIA_MEDIA_FOLDER_MACHINE_NAME', 'media_folders');
 
 /**
+ * Implements hook_permission().
+ */
+function imagex_media_permission() {
+  return array(
+    'edit terms in media_folders' => array(
+      'name' => 'edit terms in media_folders',
+    ),
+    'delete terms in media_folders' => array(
+      'name' => 'delete terms in media_folders',
+    ),
+  );
+}
+
+/**
  * Returns the media folder vocabulary object.
  *
  * @return mixed
@@ -31,18 +45,15 @@ function imagex_media_get_media_folders_vocabulary() {
  * @see media module: media/includes/media.admin.inc
  */
 function imagex_media_form_media_admin_config_browser_alter(&$form, &$form_state, $form_id) {
-
   $plugins = media_get_browser_plugin_info();
-
-  // Additional configuration if the CKEDITOR module is enabled.
+  // Additional configuration if the CKEditor module is enabled.
   $form['wysiwyg'] = array(
     '#type' => 'fieldset',
-    '#title' => t('CKEDITOR configuration'),
+    '#title' => t('CKEditor Configuration'),
     '#collapsible' => TRUE,
     '#collapsed' => FALSE,
     '#access' => module_exists('ckeditor'),
   );
- 
   $form['wysiwyg']['wysiwyg_browser_plugins'] = array(
     '#type' => 'checkboxes',
     '#title' => t('Enabled browser plugins'),
@@ -51,9 +62,11 @@ function imagex_media_form_media_admin_config_browser_alter(&$form, &$form_state
     '#default_value' => variable_get('wysiwyg_browser_plugins'),
     '#description' => t('If no plugins are selected, they will all be available.'),
   );
+
   foreach ($plugins as $key => $plugin) {
     $form['wysiwyg']['wysiwyg_browser_plugins']['#options'][$key] = !empty($plugin['title']) ? $plugin['title'] : $key;
   }
+
   $form['wysiwyg']['wysiwyg_upload_directory'] = array(
     '#type' => 'textfield',
     '#title' => t("File directory for uploaded media"),
@@ -75,5 +88,4 @@ function imagex_media_form_media_admin_config_browser_alter(&$form, &$form_state
     '#options' => file_entity_type_get_names(),
     '#default_value' => variable_get('wysiwyg_allowed_types'),
   );
-
 }

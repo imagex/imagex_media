@@ -6,9 +6,16 @@ version = 7.x-1.0
 project = imagex_media
 
 dependencies[] = imagex
+dependencies[] = file_entity
+dependencies[] = fitvids
+dependencies[] = image
+dependencies[] = libraries
 dependencies[] = media
+dependencies[] = mediafield
 ; While media_browser_plus is a dependency, it cannot be enabled here.
 ; dependencies[] = media_browser_plus
-dependencies[] = media_youtube
 ; Turning off media_crop as a dependency so it can be disabled.
 ; dependencies[] = media_crop
+dependencies[] = media_youtube
+dependencies[] = media_vimeo
+dependencies[] = taxonomy
