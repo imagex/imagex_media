@@ -10,6 +10,7 @@ function imagex_media_install() {
   foreach (imagex_media_default_variables() as $variable => $default_value) {
     variable_set($variable, $default_value);
   }
+  _imagex_media_enable_media_folders();
 }
 
 /**
@@ -25,7 +26,7 @@ function imagex_media_uninstall() {
  * Implements hook_enable().
  */
 function imagex_media_enable() {
-  _imagex_media_enable_media_folders();
+  // @TODO: Should be move the installation routines here?
 }
 
 /**
@@ -46,6 +47,7 @@ function imagex_media_disable() {
 function imagex_media_default_variables() {
   return array(
     'imagex_media_media_folder_delete_on_disable' => FALSE,
+    'image_jpeg_quality' => 95,
   );
 }
 
@@ -81,10 +83,36 @@ function _imagex_media_enable_media_folders() {
   taxonomy_term_save($media_folder_root);
   variable_set('media_browser_plus_root_folder_tid', $media_folder_root->tid);
 
+  foreach (_imagex_media_get_media_folder_child_term_definition($media_folders_vocabulary->vid) as $media_folder) {
+    $media_folder = (object) $media_folder;
+    $media_folder->parent = $media_folder_root->tid;
+    _imagex_media_create_media_folder((object) $media_folder);
+  }
+
   // Enable the media_browser_plus module. While a dependency, we cannot add it
   // as an explicit dependency within the .info file to avoid errors during
   // installation about media folders and root.
   module_enable(array('media_browser_plus'));
+}
+
+/**
+ * @param $media_folder
+ */
+function _imagex_media_create_media_folder($media_folder) {
+  $children = array();
+  if (!empty($media_folder->children)) {
+    $children = $media_folder->children;
+    unset($media_folder->children);
+  }
+
+  taxonomy_term_save($media_folder);
+
+  foreach ($children as $child) {
+    $child = (object) $child;
+    $child->vid = $media_folder->vid;
+    $child->parent = $media_folder->tid;
+    _imagex_media_create_media_folder($media_folder);
+  }
 }
 
 /**
@@ -102,4 +130,71 @@ function _imagex_media_get_media_folder_vocabulary_definition() {
     'module' => 'imagex_media',
     'weight' => '1',
   );
+}
+
+/**
+ * Returns an array representation of the media folder term definitions.
+ *
+ * @param string $media_folder_vid
+ *   The media folder vocabulary id to preset for return.
+ * @return array
+ *   An array of term definitions.
+ */
+function _imagex_media_get_media_folder_child_term_definition($media_folder_vid = '') {
+    return array(
+      'images' => array(
+        'name' => t('Images'),
+        'vid' => $media_folder_vid,
+        'children' => array(
+          'thumbnails' => array(
+            'name' => t('Thumbnails'),
+            'vid' => $media_folder_vid,
+          ),
+          'icons' => array(
+            'name' => t('Icons'),
+            'vid' => $media_folder_vid,
+          ),
+          'banners' => array(
+            'name' => t('Banners'),
+            'vid' => $media_folder_vid,
+          ),
+          'blocks' => array(
+            'name' => t('Blocks'),
+            'vid' => $media_folder_vid,
+          ),
+        ),
+      ), // end 'images' => array(
+      'documents' => array(
+        'name' => t('Documents'),
+        'vid' => $media_folder_vid,
+        'children' => array(
+          'forms' => array(
+            'name' => t('Forms'),
+            'vid' => $media_folder_vid,
+          ),
+          'pdf' => array(
+            'name' => t('PDF'),
+            'vid' => $media_folder_vid,
+          ),
+        ),
+      ), // end 'documents' => array(
+      'videos' => array(
+        'name' => t('Videos'),
+        'vid' => $media_folder_vid,
+        'children' => array(
+          'youtube' => array(
+            'name' => t('YouTube'),
+            'vid' => $media_folder_vid,
+          ),
+          'vimeo' => array(
+            'name' => t('Vimeo'),
+            'vid' => $media_folder_vid,
+          ),
+          'streaming' => array(
+            'name' => t('Streaming'),
+            'vid' => $media_folder_vid,
+          ),
+        ),
+      ), // end 'videos' => array(
+    );
 }
