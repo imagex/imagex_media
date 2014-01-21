@@ -20,23 +20,33 @@ projects[imagecrop][version] = "1.0-rc3"
 projects[imagestyleflush][type] = "module"
 projects[imagestyleflush][subdir] = "contrib"
 projects[imagestyleflush][version] = "1.2"
+projects[media][version] = "2.x-dev"
 projects[media][type] = "module"
 projects[media][subdir] = "contrib"
 projects[media][download][type] = "git"
-projects[media][download][url] = "http://git.drupal.org/project/media.git"
-; Picking a commit from latest dev past 2.0-alpha3 as of 2013/11/19 so we can
+projects[media][download][branch] = "7.x-2.x"
+; Picking a commit from latest dev past 2.0-alpha3 as of 2014/01/21 so we can
 ; avoid new development breaking functionality on new builds until we're ready
 ; to advance the version or commit forward.
-projects[media][download][revision] = "4a8831966c771b7acb611b8a21fdf63bb70a1b69"
+projects[media][download][revision] = "2f828ea761103c49197a50aaeac9b98a350a559b"
+projects[media][patch][2126755] = "http://drupal.org/files/issues/media-wysiwyg-improve-our-macro-handling-2126755-58.patch"
+projects[media][patch][2177893] = "http://drupal.org/files/issues/media-ckeditor-remove-mediawrapper-2177893-2.patch"
 projects[media_browser_plus][type] = "module"
 projects[media_browser_plus][subdir] = "contrib"
 projects[media_browser_plus][version] = "3.0-beta2"
 projects[media_embedded][type] = "module"
 projects[media_embedded][subdir] = "contrib"
 projects[media_embedded][version] = "1.0-beta3"
+projects[media_youtube][version] = "2.x-dev"
 projects[media_youtube][type] = "module"
 projects[media_youtube][subdir] = "contrib"
-projects[media_youtube][version] = "2.0-rc4"
+projects[media_youtube][download][type] = "git"
+projects[media_youtube][download][revision] = "ca46aba"
+projects[media_youtube][download][branch] = "7.x-2.x"
+; media_access() is deceprated and will be removed
+; https://drupal.org/node/1823376
+projects[media_youtube][patch][1823376] = "http://drupal.org/files/issues/provide-access-wrapper-1823376-6.patch"
+
 projects[media_vimeo][type] = "module"
 projects[media_vimeo][subdir] = "contrib"
 projects[media_vimeo][version] = "2.0-rc1"
