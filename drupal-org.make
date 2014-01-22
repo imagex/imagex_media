@@ -41,11 +41,8 @@ projects[media_youtube][version] = "2.x-dev"
 projects[media_youtube][type] = "module"
 projects[media_youtube][subdir] = "contrib"
 projects[media_youtube][download][type] = "git"
-projects[media_youtube][download][revision] = "ca46aba"
+projects[media_youtube][download][revision] = "fab87ce15d44a0a41d1fb908ace7983c7d28693c"
 projects[media_youtube][download][branch] = "7.x-2.x"
-; media_access() is deceprated and will be removed
-; https://drupal.org/node/1823376
-projects[media_youtube][patch][1823376] = "http://drupal.org/files/issues/provide-access-wrapper-1823376-6.patch"
 
 projects[media_vimeo][type] = "module"
 projects[media_vimeo][subdir] = "contrib"
