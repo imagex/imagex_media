@@ -29,8 +29,8 @@ projects[media][download][branch] = "7.x-2.x"
 ; avoid new development breaking functionality on new builds until we're ready
 ; to advance the version or commit forward.
 projects[media][download][revision] = "2f828ea761103c49197a50aaeac9b98a350a559b"
-projects[media][patch][2126755] = "http://drupal.org/files/issues/media-wysiwyg-improve-our-macro-handling-2126755-58.patch"
-projects[media][patch][2177893] = "http://drupal.org/files/issues/media-ckeditor-remove-mediawrapper-2177893-2.patch"
+projects[media][patch][2126755] = "https://raw.github.com/imagex/imagex_patches/7.x/contrib/media/media-wysiwyg-improve-our-macro-handling-2126755-58.patch"
+projects[media][patch][2177893] = "https://raw.github.com/imagex/imagex_patches/7.x/contrib/media/media-ckeditor-remove-mediawrapper-2177893-2.patch"
 projects[media_browser_plus][type] = "module"
 projects[media_browser_plus][subdir] = "contrib"
 projects[media_browser_plus][version] = "3.0-beta2"
