@@ -48,6 +48,18 @@ function imagex_media_default_variables() {
   return array(
     'imagex_media_media_folder_delete_on_disable' => FALSE,
     'image_jpeg_quality' => 95,
+    'media_wysiwyg_wysiwyg_browser_plugins' => array(
+      'upload',
+      'media_browser_plus--media_browser_thumbnails',
+      'media_browser_plus--media_browser_my_files',
+      'media_internet'
+    ),
+    'media_wysiwyg_wysiwyg_allowed_types' => array(
+      'image',
+      'video',
+      'audio',
+      'document'
+    ),
   );
 }
 
