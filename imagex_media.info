@@ -11,6 +11,7 @@ dependencies[] = fitvids
 dependencies[] = image
 dependencies[] = libraries
 dependencies[] = media
+dependencies[] = mediaelement
 dependencies[] = mediafield
 ; While media_browser_plus is a dependency, it cannot be enabled here.
 ; dependencies[] = media_browser_plus

@@ -60,6 +60,7 @@ function imagex_media_imagex_variables() {
       'audio',
       'document'
     ),
+    'mediaelement_sitewide' => 1,
   );
 }
 
