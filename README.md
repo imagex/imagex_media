@@ -21,13 +21,13 @@ By default ImageX Media contains the "Web" tab which allows for embedding of vid
 
     ![Screenshot of Media WYSIWYG view mode settings](docs/images/media_wysiwyg_view_mode.png "Media WYSIWYG view mode settings")
 
-3. Return to the file type display view mode settings and configure the WYSIWYG view mode. Set the displays to use as `MediaElement Video`, `Vimeo Preview Image`, and `YouTube Preview Image`. Set the precedence to put `MediaElement Video` on top, unless you prefer the preview images are used instead of the video player.
+3. Return to the file type display view mode settings and configure the WYSIWYG view mode. Set the displays to use as `Vimeo Preview Image`, and `YouTube Preview Image`. If you prefer, you can enable and set the precedence of the `MediaElement Video`, however this will display a non-functional player that will not look the same across browsers.
 
     /admin/structure/file-types/manage/video/file-display/wysiwyg
 
     ![Screenshot of WYSIWYG view mode file display settings](docs/images/file_display-wysiwyg_view_mode.png "WYSIWYG view mode file display settings")
 
-The end result will be the ability to have fully function video embeds in the media browser preview and on the frontend, along with a non-functioning video editor shell embedded in the WYSIWYG editor. The editor's video player isn't functional because the editor is inside an iframe and doesn't have mediaelement.js.
+The end result will be the ability to have fully function video embeds in the media browser preview and on the frontend, along with a non-functioning video preview image embedded in the WYSIWYG editor. The editor's video player isn't functional because the editor is inside an iframe and doesn't have mediaelement.js.
 
 - **Media browser preview**
 
