@@ -28,3 +28,15 @@ By default ImageX Media contains the "Web" tab which allows for embedding of vid
     ![Screenshot of WYSIWYG view mode file display settings](docs/images/file_display-wysiwyg_view_mode.png "WYSIWYG view mode file display settings")
 
 The end result will be the ability to have fully function video embeds in the media browser preview and on the frontend, along with a non-functioning video editor shell embedded in the WYSIWYG editor. The editor's video player isn't functional because the editor is inside an iframe and doesn't have mediaelement.js.
+
+- **Media browser preview**
+
+    ![Screenshot of media browser preview video embed](docs/images/video_embed-media_browser_preview.png "Media browser preview video embed")
+
+- **Editor**
+
+    ![Screenshot of WYSIWYG editor video embed](docs/images/video_embed-editor.png "WYSIWYG editor video embed")
+
+- **Frontend**
+
+    ![Screenshot of frontend video embed](docs/images/video_embed-frontend.png "Frontend video embed")
