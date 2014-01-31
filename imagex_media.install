@@ -39,12 +39,12 @@ function imagex_media_disable() {
 }
 
 /**
- * Returns an array of default variables.
+ * Implements hook_imagex_variables().
  *
  * @return array
  *   Returns a variable name keyed array with default values.
  */
-function imagex_media_default_variables() {
+function imagex_media_imagex_variables() {
   return array(
     'imagex_media_media_folder_delete_on_disable' => FALSE,
     'image_jpeg_quality' => 95,
@@ -60,6 +60,7 @@ function imagex_media_default_variables() {
       'audio',
       'document'
     ),
+    'mediaelement_sitewide' => 1,
   );
 }
 
@@ -129,7 +130,7 @@ function _imagex_media_create_media_folder($media_folder) {
 
 /**
  * Returns an array representation of the media folders vocabulary.
- * 
+ *
  * @return array
  *   Returns an associative array that mocks the vocabulary for creation.
  */
