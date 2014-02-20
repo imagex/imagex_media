@@ -7,9 +7,6 @@
  * Implements hook_install().
  */
 function imagex_media_install() {
-  foreach (imagex_media_default_variables() as $variable => $default_value) {
-    variable_set($variable, $default_value);
-  }
   _imagex_media_enable_media_folders();
 }
 
@@ -17,9 +14,7 @@ function imagex_media_install() {
  * Implements hook_uninstall().
  */
 function imagex_media_uninstall() {
-  foreach (imagex_media_default_variables() as $variable => $default_value) {
-    variable_del($variable);
-  }
+
 }
 
 /**
