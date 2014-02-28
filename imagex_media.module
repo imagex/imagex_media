@@ -15,9 +15,11 @@ function imagex_media_permission() {
   return array(
     'edit terms in media_folders' => array(
       'name' => 'edit terms in media_folders',
+      'title' => 'edit terms in media_folders',
     ),
     'delete terms in media_folders' => array(
       'name' => 'delete terms in media_folders',
+      'title' => 'delete terms in media_folders',
     ),
   );
 }
