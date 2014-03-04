@@ -32,3 +32,17 @@ function imagex_media_permission() {
 function imagex_media_get_media_folders_vocabulary() {
   return taxonomy_vocabulary_machine_name_load(IMAGEX_MEDIA_MEDIA_FOLDER_MACHINE_NAME);
 }
+
+/**
+ * Implements hook_form_alter().
+ */
+function imagex_media_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'media_youtube_add') {
+    $term = isset($form_state['input']['search']) ? $form_state['input']['search'] : (isset($_GET['search']) ? $_GET['search'] : '');
+    if (!empty($term)) {
+      drupal_add_js('(function($){$(document).ready(function(){
+        Drupal.media.browser.activeTab = 1;
+        });})(jQuery);', array('type' => 'inline'));
+    }
+  }
+}
